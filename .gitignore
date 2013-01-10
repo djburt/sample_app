@@ -15,4 +15,6 @@
 /tmp
 
 *~
+*.swp
+*.SWP
 *.DS_Store
