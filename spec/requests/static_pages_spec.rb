@@ -10,6 +10,13 @@ describe "StaticPages" do
     end
   end
 
+  describe "Help Page" do
+
+    it "should have the content 'Help'" do
+      visit '/static_pages/help'
+      page.should have_content('Help')
+    end
+  end
 # Default: rails generate integration_test static_pages
 #  describe "GET /static_pages" do
 #    it "works! (now write some real specs)" do
