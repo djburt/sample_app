@@ -1,56 +1,55 @@
 require 'spec_helper'
 
+def static_pages_tag?(page_name, tag_name, string)
+  visit "/static_pages/#{page_name}"
+  page.should have_selector(tag_name, :text => string)
+end
+
 describe "StaticPages" do
 
-  describe "Home Page" do
+  base_title = "Ruby on Rails Tutorial Sample App"
 
+  describe "Home Page" do
+    
     it "should have the h1 'Sample App'" do
-      visit '/static_pages/home'
-      page.should have_selector('h1', :text => 'Sample App')
+      static_pages_tag?('home', 'h1', 'Sample App')
     end
 
     it "should have the title 'Home'" do
-      visit '/static_pages/home'
-      page.should have_selector('title', :text => "Ruby on Rails Tutorial Sample App | Home")
+      static_pages_tag?('home', 'title', "#{base_title} | Home")
     end
   end
 
   describe "Help Page" do
 
     it "should have the h1 'Help'" do
-      visit '/static_pages/help'
-      page.should have_selector('h1', :text => 'Help')
+      static_pages_tag?('help', 'h1', 'Help')
     end
 
     it "should have the title 'Help'" do
-      visit '/static_pages/help'
-      page.should have_selector('title', :text => "Ruby on Rails Tutorial Sample App | Help")
+      static_pages_tag?('help', 'title', "#{base_title} | Help")
     end
   end
 
   describe "About page" do 
 
     it "should have the h1 'About Us'" do
-      visit '/static_pages/about'
-      page.should have_selector('h1', :text => 'About Us')
+      static_pages_tag?('about', 'h1', 'About Us')
     end
 
     it "should have the title 'About Us'" do
-      visit '/static_pages/about'
-      page.should have_selector('title', :text => "Ruby on Rails Tutorial Sample App | About Us")
+      static_pages_tag?('about', 'title', "#{base_title} | About Us")
     end
   end
 
   describe "Contact page" do
 
     it "should have the h1 'Contact'" do
-      visit '/static_pages/contact'
-      page.should have_selector('h1', :text => 'Contact')
+      static_pages_tag?('contact', 'h1', 'Contact')
     end
 
     it "should have the title 'Contact'" do
-      visit '/static_pages/contact'
-      page.should have_selector("title", :text => 'Ruby on Rails Tutorial Sample App | Contact')
+      static_pages_tag?('contact', 'title', "#{base_title} | Contact")
     end
   end
 # Default: rails generate integration_test static_pages
