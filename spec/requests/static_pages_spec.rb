@@ -15,8 +15,13 @@ describe "StaticPages" do
       static_pages_tag?('home', 'h1', 'Sample App')
     end
 
-    it "should have the title 'Home'" do
-      static_pages_tag?('home', 'title', "#{base_title} | Home")
+    it "should have the base title" do
+      static_pages_tag?('home', 'title', base_title)
+    end
+
+    it "should not have a custom page title" do
+      visit '/static_pages/home'
+      page.should_not have_selector('title', :text => '| Home')
     end
   end
 
