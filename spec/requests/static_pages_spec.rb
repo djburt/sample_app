@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-def static_pages_tag?(page_name, tag_name, string)
-  visit "/static_pages/#{page_name}"
+def tag_check(page_path, tag_name, string)
+  visit page_path
   page.should have_selector(tag_name, :text => string)
 end
 
@@ -12,15 +12,15 @@ describe "StaticPages" do
   describe "Home Page" do
     
     it "should have the h1 'Sample App'" do
-      static_pages_tag?('home', 'h1', 'Sample App')
+      tag_check(root_path, 'h1', 'Sample App')
     end
 
     it "should have the base title" do
-      static_pages_tag?('home', 'title', base_title)
+      tag_check(root_path, 'title', base_title)
     end
 
     it "should not have a custom page title" do
-      visit '/static_pages/home'
+      visit root_path
       page.should_not have_selector('title', :text => '| Home')
     end
   end
@@ -28,33 +28,33 @@ describe "StaticPages" do
   describe "Help Page" do
 
     it "should have the h1 'Help'" do
-      static_pages_tag?('help', 'h1', 'Help')
+      tag_check(help_path, 'h1', 'Help')
     end
 
     it "should have the title 'Help'" do
-      static_pages_tag?('help', 'title', "#{base_title} | Help")
+      tag_check(help_path, 'title', "#{base_title} | Help")
     end
   end
 
   describe "About page" do 
 
     it "should have the h1 'About Us'" do
-      static_pages_tag?('about', 'h1', 'About Us')
+      tag_check(about_path, 'h1', 'About Us')
     end
 
     it "should have the title 'About Us'" do
-      static_pages_tag?('about', 'title', "#{base_title} | About Us")
+      tag_check(about_path, 'title', "#{base_title} | About Us")
     end
   end
 
   describe "Contact page" do
 
     it "should have the h1 'Contact'" do
-      static_pages_tag?('contact', 'h1', 'Contact')
+      tag_check(contact_path, 'h1', 'Contact')
     end
 
     it "should have the title 'Contact'" do
-      static_pages_tag?('contact', 'title', "#{base_title} | Contact")
+      tag_check(contact_path, 'title', "#{base_title} | Contact")
     end
   end
 # Default: rails generate integration_test static_pages
