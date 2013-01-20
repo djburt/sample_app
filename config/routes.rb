@@ -1,5 +1,5 @@
 SampleApp::Application.routes.draw do
-  # get "static_pages/home"
+  # get "static_pages/home"     # = match 'static_pages/home' => 'static_pages#home', :via => :get
   # get "static_pages/help"
   # get "static_pages/about"
   # get "static_pages/contact"
@@ -7,7 +7,7 @@ SampleApp::Application.routes.draw do
   # URI Mappings
   # match '/action' automatically creates named routes (e.g. action_path, action_url)
   # You can have the root of your site routed with "root", just remember to delete public/index.html.
-  root to: 'static_pages#home'                  # match '/', to: 'static_pages#home'
+  root to: 'static_pages#home'                  # match '/', to: 'static_pages#home', as: root
   match '/help', to: 'static_pages#help'
   match '/about', to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
