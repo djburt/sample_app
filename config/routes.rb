@@ -1,4 +1,6 @@
 SampleApp::Application.routes.draw do
+  get "users/new"
+
   # get "static_pages/home"     # = match 'static_pages/home' => 'static_pages#home', :via => :get
   # get "static_pages/help"
   # get "static_pages/about"
