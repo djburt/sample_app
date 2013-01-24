@@ -1,10 +1,10 @@
 SampleApp::Application.routes.draw do
-  get "users/new"
-
+  # Routes added by generate
   # get "static_pages/home"     # = match 'static_pages/home' => 'static_pages#home', :via => :get
   # get "static_pages/help"
   # get "static_pages/about"
   # get "static_pages/contact"
+  # get "users/new"
 
   # URI Mappings
   # match '/action' automatically creates named routes (e.g. action_path, action_url)
@@ -13,6 +13,8 @@ SampleApp::Application.routes.draw do
   match '/help', to: 'static_pages#help'
   match '/about', to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
+
+  match '/signup', to: 'users#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
